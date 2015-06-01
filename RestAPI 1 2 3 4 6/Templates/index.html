@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h>Обтяження</h>
+<div id="enc-list" class="list">
+</div>
+
+<script>
+	var view = new REG.VIEWS.ExampleListEnc();
+	view.init();
+	REG.COLLECTIONS.Encumbrance.fetch({ reset : true })
+</script>
+
+
+{% endblock %}

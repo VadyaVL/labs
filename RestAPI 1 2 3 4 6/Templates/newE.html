@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %} 
+{%if id != -1%}
+    <script>
+    editEncumbrance({{id}});
+    </script>
+{%endif%}
+<div class="row">
+
+    <div class="row-fluid">
+
+        <div class="span3">
+            <h1>Обтяження</h1>
+            <form name="formE">
+                {{formE}}
+            </form>
+        </div>
+        <div class="span3">
+            <h1>Об'єкт</h1>
+             <form name="formO">
+                {{formO}}
+            </form>
+            <h1>Документ</h1>
+             <form name="formD">
+                {{formD}}
+            </form>
+        </div>
+        <div class="span3">
+            <h1>Умови</h1>
+             <form name="formT">
+                {{formT}}
+            </form>
+            {%if id != -1%}
+                <input type="button" class="btn-large pull-left" id="btnE" onclick="saveEEncumbrance()" value="Редагувати">
+            {%else%}
+                <input type="button" class="btn-large pull-left" id="btn" onclick="saveEncumbrance()" value="Додати">
+            {%endif%}
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

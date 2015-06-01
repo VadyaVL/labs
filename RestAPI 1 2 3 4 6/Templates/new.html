@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block content %} 
+
+<div class="row">
+
+     <script>
+        function send() {
+        if("{{obj}}" == "ViewEncumbrance"){
+            saveViewOfEnc();
+            }
+         else if ("{{obj}}" == "TypeReg"){
+            saveTypeReg();
+            }
+         else if("{{obj}}" == "TypeOfEncumbrance"){
+            saveTypeOfEnc();
+            }
+         else if("{{obj}}" == "TypeOfCurrency"){
+            saveTypeOfCurrency();
+            }
+         else if("{{obj}}" == "Address"){
+            saveAddress();
+            }
+         else if("{{obj}}" == "PAddress"){
+            savePAddress();
+            }
+         else if("{{obj}}" == "Person"){
+            savePerson();
+            }
+         else if("{{obj}}" == "PPerson"){
+            savePPerson();
+            }
+         else if("{{obj}}" == "PFormOfLeg"){
+            savePFormOfLeg();
+            }
+         else if("{{obj}}" == "PTypeOfSocForm"){
+            savePTypeOfSocForm();
+            }
+         else if("{{obj}}" == "PSocialFormation"){
+            savePSocialFormation();
+            }
+         else if("{{obj}}" == "PFilia"){
+            savePFilia();
+            }
+    };
+
+    function sendE(i) {
+        if("{{obj}}" == "ViewEncumbrance"){
+            saveEViewOfEnc(i);
+        }
+        else if("{{obj}}" == "TypeOfEncumbrance"){
+            saveETypeOfEnc(i);
+        }
+        else if("{{obj}}" == "TypeReg"){
+            saveETypeReg(i);
+        }
+        else if("{{obj}}" == "TypeOfCurrency"){
+            saveETypeOfCurrency(i);
+        }
+        else if("{{obj}}" == "Address"){
+            saveEAddress(i);
+        }
+        else if("{{obj}}" == "PAddress"){
+            savePEAddress(i);
+        }
+        else if("{{obj}}" == "Person"){
+            saveEPerson(i);
+        }
+        else if("{{obj}}" == "PPerson"){
+            savePEPerson(i);
+        }
+        else if("{{obj}}" == "PFormOfLeg"){
+            savePEFormOfLeg(i);
+        }
+        else if("{{obj}}" == "PTypeOfSocForm"){
+            savePETypeOfSocForm(i);
+        }
+        else if("{{obj}}" == "PSocialFormation"){
+            savePESocialFormation(i);
+        }
+        else if("{{obj}}" == "PFilia"){
+            savePEFilia(i);
+        }
+
+
+
+
+        var btn = document.getElementById("btn");
+        btn.setAttribute('onclick','send()');
+        btn.value = "Додати";
+    };
+    </script>
+<div class="row-fluid">
+    <div class="span3">
+    {%if obj = "ViewEncumbrance"%}
+            <h><b>Вид обтяження</b></h>
+    {%elif obj = "TypeOfEncumbrance"%}
+            <h><b>Тип обтяження</b></h>
+    {%elif obj = "TypeReg"%}
+            <h><b>Тип реєстрації</b></h>
+    {%elif obj = "TypeOfCurrency"%}
+            <h><b>Тип валюти</b></h>
+    {%elif obj = "Address"%}
+            <h><b>Адреси</b></h>
+    {%elif obj = "PAddress"%}
+        <h><b>Павло - Адреси</b></h>
+    {%elif obj = "Person"%}
+        <h><b>Громадяни</b></h>
+    {%elif obj = "PPerson"%}
+        <h><b>Павло - Громадяни</b></h>
+    {%elif obj = "PFormOfLeg"%}
+        <h><b>Павло - Форма легалізації</b></h>
+    {%elif obj = "PTypeOfSocForm"%}
+        <h><b>Павло - Тип соціального формування</b></h>
+    {%elif obj = "PSocialFormation"%}
+        <h><b>Павло - Соціальне формування</b></h>
+    {%elif obj = "PFilia"%}
+        <h><b>Павло - Філія</b></h>
+    {%endif%}
+
+
+        <form id="form" name="form">
+            {{form}}
+        </form>
+        <input type="button" class="btn pull-left" id="btn" onclick="send()" value="Додати">
+    </div>
+
+    <div class="span9">
+        <div id="my-model-list" class="list">
+        </div>
+    </div>
+
+</div>
+<br/>
+    <script>
+        var view = new REG.VIEWS.ExampleList();
+        view.init("{{obj}}");
+
+        if ("{{obj}}" == "ViewEncumbrance") {
+            REG.COLLECTIONS.ViewOfEnc.fetch({ reset : true });
+            }
+        else if("{{obj}}" == "TypeReg"){
+            REG.COLLECTIONS.TypeReg.fetch({ reset : true });
+            }
+        else if("{{obj}}" == "TypeOfEncumbrance"){
+            REG.COLLECTIONS.TypeOfEnc.fetch({ reset : true });
+            }
+        else if ("{{obj}}" == "TypeOfCurrency") {
+            REG.COLLECTIONS.TypeOfCurrency.fetch({ reset : true });
+            }
+        else if ("{{obj}}" == "Address") {
+            REG.COLLECTIONS.Address.fetch({ reset : true });
+            }
+        else if ("{{obj}}" == "PAddress") {
+            initPAddressFrom();
+            REG.COLLECTIONS.PAddress.fetch({ reset : true });
+            }
+        else if ("{{obj}}" == "Person") {
+            REG.COLLECTIONS.Person.fetch({ reset : true });
+            }
+        else if ("{{obj}}" == "PPerson") {
+            initPPersonFrom();
+            REG.COLLECTIONS.PPerson.fetch({ reset : true });
+            }
+        else if ("{{obj}}" == "PFormOfLeg") {
+            initPFormOfLeg();
+            REG.COLLECTIONS.PFormOfLeg.fetch({ reset : true });
+            }
+        else if ("{{obj}}" == "PTypeOfSocForm") {
+            initPTypeOfSocForm();
+            REG.COLLECTIONS.PTypeOfSocForm.fetch({ reset : true });
+            }
+        else if ("{{obj}}" == "PSocialFormation") {
+            initPSocialFormation();
+            REG.COLLECTIONS.PSocialFormation.fetch({ reset : true });
+            }
+        else if ("{{obj}}" == "PFilia") {
+            initPFilia();
+            REG.COLLECTIONS.PFilia.fetch({ reset : true });
+            }
+
+
+
+    </script>
+</div>
+
+{% endblock %}

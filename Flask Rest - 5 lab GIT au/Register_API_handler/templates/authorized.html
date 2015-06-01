@@ -1,0 +1,48 @@
+{% extends "index.html"  %}
+
+{% block login %}
+<a href="/logout">LOGOUT</a>
+{% endblock %}
+
+{% block adder %}
+
+<form action="/add" method="post">
+ {{ form.numberStatement }}
+ {{ form.dateStatement }}
+ {{ form.type_id }}
+ {{ form.object_id }}
+ {{ form.person_id }}
+ {{ form.submit }}
+</form>
+
+{% endblock %}
+
+{% block content %}
+ <table border="1">
+     <tr>
+
+        <td>ID</td>
+        <td>Номер заяви</td>
+        <td>Дата заяви</td>
+        <td>Тип</td>
+        <td>Об'єкт</td>
+        <td>Особа</td>
+
+     </tr>
+{% for enc in objects %}
+<tr>
+
+<td>{{ enc.id }}</td>
+<td>{{ enc.numberStatement }}</td>
+<td>{{ enc.dateStatement }}</td>
+<td>{{ enc.type_id }}</td>
+<td>{{ enc.object_id }}</td>
+<td>{{ enc.person_id }}</td>
+<td><a href="/update/{{ enc.id }}">Оновити</a></td>
+<td><a href="/delete/{{ enc.id }}">Видалити</a></td>
+
+</tr>
+
+{% endfor %}
+</table>
+{% endblock %}
